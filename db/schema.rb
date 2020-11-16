@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 2020_11_16_161628) do
     t.index ["psychic_id"], name: "index_accessories_on_psychic_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.string "status", default: "pending"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "nb_accessories"
+    t.float "total_price"
+    t.bigint "user_id", null: false
+    t.bigint "psychic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["psychic_id"], name: "index_bookings_on_psychic_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "psychics", force: :cascade do |t|
     t.string "specialty"
     t.string "localisation"
@@ -49,5 +63,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_161628) do
   end
 
   add_foreign_key "accessories", "psychics"
+  add_foreign_key "bookings", "psychics"
+  add_foreign_key "bookings", "users"
   add_foreign_key "psychics", "users"
 end
