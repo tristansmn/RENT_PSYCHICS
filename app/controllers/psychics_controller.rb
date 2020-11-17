@@ -1,0 +1,2 @@
+class PsychicsController < ApplicationController
+end
