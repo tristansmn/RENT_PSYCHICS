@@ -1,7 +1,7 @@
 class PsychicsController < ApplicationController
-	before_action :find_psychic, only: [ :show ]
+  before_action :find_psychic, only: [ :show ]
   def index
-  	Psychic.all
+    @psychics = Psychic.all
   end
 
   def new
@@ -24,7 +24,7 @@ class PsychicsController < ApplicationController
 
 
   private
-  
+
   def find_psychic
   @psychic = Psychic.find(params[:id])
   end
