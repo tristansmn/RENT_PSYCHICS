@@ -1,5 +1,7 @@
 class PsychicsController < ApplicationController
+
   before_action :find_psychic, only: [ :show ]
+
   def index
     @psychics = Psychic.all
   end
