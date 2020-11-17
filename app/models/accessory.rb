@@ -1,3 +1,3 @@
 class Accessory < ApplicationRecord
-  belongs_to :psychic
+  belongs_to :psychic, optional: true
 end
