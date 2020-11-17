@@ -1,8 +1,7 @@
 class Accessory < ApplicationRecord
-<<<<<<< HEAD
-  belongs_to :psychic
-  validates :name, :price, :psychic, presence: true
-=======
   belongs_to :psychic, optional: true
->>>>>>> master
+  validates :name, :price, :psychic, presence: true
+  validates :price, numericality: { only_integer: true }
+  
+
 end
