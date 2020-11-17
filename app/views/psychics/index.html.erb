@@ -1,0 +1,26 @@
+<h2 class="text-align:">Psyshics</h2>
+
+<div class="big-container d-flex justify-content-center">
+  <div class="psychics-container">
+
+  <% @psychics.each do |psychic| %>
+    <div class="card-product">
+     <!--  <=% if cocktail.photo.attached? %>
+        <=%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+      <=% else %> -->
+        <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+    <!--   <=% end %> -->
+        <div class="card-product-infos">
+          <h2><%= psychic.user.name%><%= psychic.user.last_name%></h2>
+          <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
+          <p><%= link_to 'show psychic', psychic_path(psychic) %></p>
+        </div>
+          <div class="price d-flex align-items-end justify-content-end">
+            <div class="hour-rate">
+              <p>$<%= psychic.hour_rate %>/hour</p>
+            </div>
+           </div>
+          </div>
+    <% end %>
+  </div>
+</div>
