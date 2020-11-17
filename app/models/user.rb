@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_one :psychic
   has_many :psychics, through: :bookings
+
+  validates :name, :last_name, :email, presence: true
+  validates :email, uniqueness: true
 end
