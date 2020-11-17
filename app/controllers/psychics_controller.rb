@@ -3,7 +3,7 @@ class PsychicsController < ApplicationController
   before_action :find_psychic, only: [ :show ]
 
   def index
-  	Psychic.all
+    @psychics = Psychic.all
   end
 
   def new
