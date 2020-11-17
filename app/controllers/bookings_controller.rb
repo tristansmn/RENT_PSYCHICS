@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
 
   def create
     # creer un nouveau booking en tant que user
+    # a la con
   end
 
   def show
