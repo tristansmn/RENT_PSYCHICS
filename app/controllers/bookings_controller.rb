@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   def create
     # creer un nouveau booking en tant que user
     # a la con
-    @booking = Psychic.new(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.psychic_id = @psychic.id
     
