@@ -14,7 +14,7 @@ require 'faker'
 Psychic.destroy_all if Rails.env.development?
 User.destroy_all if Rails.env.development?
 Accessory.destroy_all if Rails.env.development?
-# Booking.destroy_all if Rails.env.development?
+Booking.destroy_all if Rails.env.development?
 
 accessories = %w(CrystalBall MagicTea, Van Cat Ghost AK47)
 specialties = %w(blackMagic Voodoo Karma Visions Ghosts)
