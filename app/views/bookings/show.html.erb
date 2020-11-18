@@ -1,0 +1,17 @@
+<h1>Thanks you !</h1>
+
+<h2>Your booking with 
+	<% psychic = Psychic.find(@booking.psychic_id) %>
+	<%= User.find(psychic.user_id).name %>
+	(specialty: <%= psychic.specialty %>)
+: </h2>
+
+<ul>
+  <li>Start date: <%= @booking.start_date %></li>
+  <li>End date: <%= @booking.end_date %></li>	
+  <li>Accessories: none</li>
+  <li>Total price: <%= @booking.total_price %>€</li>
+  <li>Status: <%= @booking.status%></li>
+</ul>
+
+<p><%= User.find(psychic.user_id).name%> must confirm before any payment.</p>
