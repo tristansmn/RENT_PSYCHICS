@@ -1,12 +1,29 @@
 <br>
 <br>
 <br>
-<br>
 
-<div class="big-container d-flex justify-content-center">
+
+
 <%= simple_form_for([@psychic, @booking]) do |f| %>
-  <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
-  <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
-  <%= f.submit "book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+  <div class="dates">
+    <div class="form-inputs">
+      <div class="form-row">
+        <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+        <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
+      </div>
+    </div>
+  </div>
+    <table class="table">
+      <tr>
+        <td>€<%= @psychic.hour_rate %> x <span id="hours">0</span> hours</td>
+        <td class="text-right">€<span id="price">0</span></td>
+      </tr>
+      <tr>
+        <td><strong>Total Price</strong></td>
+        <td class="text-right">€<span id=total-price>0</span></td>
+      </tr>
+    </table>
+  <div class="form-row">
+    <%= f.submit "book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+  </div>
 <% end %>
-</div>
