@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+
+
+
+<div id='psychic-booking-dates'>
+       <%= simple_form_for([@psychic, @booking]) do |f| %>
+          <%= f.input :start_date, as: :string, type: :text %>
+          <%= f.input :end_date, as: :string, type: :text%>
+	  <table class="table">
+	      <tr>
+	        <td>€<%= @psychic.hour_rate %> x <span id="hours">0</span> hours</td>
+	        <td class="text-right">€<span id="price">0</span></td>
+	      </tr>
+
+	      <tr>
+	        <td><strong>Total Price</strong></td>
+	        <td class="text-right">€<span id=total-price>0</span></td>
+	      </tr>
+	  </table>
+           <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
+ </div>

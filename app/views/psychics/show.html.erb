@@ -12,7 +12,7 @@
       <p>lives in <%= @psychic.localisation %></p>
       <p><strong><%= @psychic.hour_rate %>€</strong> per hour</p>
     </div>
-    <%= link_to "Book now", "new_psychic_booking_path", class: "btn btn-flat btn-card-show-psychic" %>
+    <%= link_to "Book now", new_psychic_booking_path(@psychic), class: "btn btn-flat btn-card-show-psychic" %>
   </div>
 </div>
 
