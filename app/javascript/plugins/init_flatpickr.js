@@ -22,7 +22,8 @@ const initFlatpickr = () => {
     }
     flatpickr(endDateInput, {
       minDate: e.target.value,
-      dateFormat: "Y-m-d"
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
       });
     })
 };
