@@ -10,7 +10,8 @@ const initFlatpickr = () => {
 
   flatpickr(startDateInput, {
     minDate: "today",
-    dateFormat: "Y-m-d",
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
   });
 
   console.log('im in the file')
