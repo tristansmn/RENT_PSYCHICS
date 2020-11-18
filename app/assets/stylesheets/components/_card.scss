@@ -11,7 +11,7 @@
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 30%;
   object-fit: cover;
 }
 
@@ -31,9 +31,17 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+  width: 70%;
 }
 
 .card-product-infos span {
   font-size: 35px;
   color: $purple;
+}
+
+.hour-rate {
+  width: 100%;
+  p {
+    text-align: right;
+  }
 }
