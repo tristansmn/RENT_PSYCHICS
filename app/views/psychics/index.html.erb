@@ -1,4 +1,4 @@
-<div class="big-container d-flex justify-content-center">
+<div id="psychics-bg" class="big-container d-flex justify-content-center">
   <div class="psychics-container">
 
   <% @psychics.each do |psychic| %>
@@ -13,7 +13,7 @@
           <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
           <p><%= link_to 'show psychic', psychic_path(psychic) %></p>
             <div class="hour-rate">
-              <p><strong>$<%= psychic.hour_rate %></strong>/hour</p>
+              <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
             </div>
           </div>
         </div>

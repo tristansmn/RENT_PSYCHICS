@@ -1,12 +1,12 @@
-<div class="container">
+<div id="psychic-bg" class="container">
   <div class="card-product">
 
-    <img src="https://images.unsplash.com/photo-1592215955539-f020e64a7125?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
+    <img src="https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg"/>
     <div class="card-product-infos">
       <h2>Fortune Teller: <span><%= User.find(@psychic.user_id).name %></span></h2>
       <p>specialisation in <strong><%= @psychic.specialty %></strong></p>
       <p>lives in <%= @psychic.localisation %></p>
-      <p><strong><%= @psychic.hour_rate %>€</strong> per hour</p>
+      <p><strong>€<%= @psychic.hour_rate %></strong> per hour</p>
     </div>
     <%= link_to "Book now", new_psychic_booking_path(@psychic), class: "btn btn-flat btn-card-show-psychic" %>
   </div>
