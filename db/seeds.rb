@@ -13,8 +13,8 @@ require 'faker'
 
 Psychic.destroy_all if Rails.env.development?
 User.destroy_all if Rails.env.development?
-Booking.destroy_all if Rails.env.development?
 Accessory.destroy_all if Rails.env.development?
+# Booking.destroy_all if Rails.env.development?
 
 accessories = %w(CrystalBall MagicTea, Van Cat Ghost AK47)
 specialties = %w(blackMagic Voodoo Karma Visions Ghosts)
@@ -41,3 +41,16 @@ accessories.each do |accessory|
   Accessory.create!(name: accessory, price: rand(5..200))
 end
 # il faudrait une table de jointure entre accessories et psychic
+
+# pour booking l erreur pour rails:seed➜  RENT_PSYCHICS git:(master) rails db:seed
+# rails aborted!
+# ArgumentError: You need to supply at least one validation
+# /Users/antoine/code/TRISTAN/RENT_PSYCHICS/app/models/booking.rb:6:in `<class:Booking>'
+# /Users/antoine/code/TRISTAN/RENT_PSYCHICS/app/models/booking.rb:1:in `<main>'
+# /Users/antoine/code/TRISTAN/RENT_PSYCHICS/db/seeds.rb:16:in `<main>'
+# /Users/antoine/code/TRISTAN/RENT_PSYCHICS/bin/rails:9:in `<top (required)>'
+# /Users/antoine/code/TRISTAN/RENT_PSYCHICS/bin/spring:15:in `<top (required)>'
+# ./bin/rails:3:in `load'
+# ./bin/rails:3:in `<main>'
+# Tasks: TOP => db:seed
+# (See full trace by running task with --trace)
