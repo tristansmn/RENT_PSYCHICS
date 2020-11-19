@@ -18,8 +18,10 @@
                 <div class="p-4">
                   <h3><%= psychic.user.name%><%= psychic.user.last_name%></h3>
                   <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
-                  <div>
-                    <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
+                  <div class='d-flex justify-content-end' style="margin-top: 22px">
+                    <div>
+                      <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
+                    </div>
                   </div>
                 </div>
               <% end %>

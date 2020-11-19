@@ -16,21 +16,27 @@ User.destroy_all if Rails.env.development?
 Accessory.destroy_all if Rails.env.development?
 Booking.destroy_all if Rails.env.development?
 
-accessories = %w(CrystalBall MagicTea, Van Cat Ghost AK47)
-specialties = %w(blackMagic Voodoo Karma Visions Ghosts)
+accessories = %w(CrystalBall MagicTea Van Cat Ghost AK47)
+specialties = %w(blackMagic Voodoo KarmaBooster Visions Ghosts)
+addresses = [
+  "20 rue de la pompe Paris",
+  "2 avenue des champs elysees Paris",
+  "Kensington Gardens, Kensington, London W8 4PX, Royaume-Uni",
+  "Calle Irlanda, 2, 28019 Madrid, Espagne"
+  ]
 
 20.times do
   User.create(
-    name: Faker::Name.name,
-    last_name: Faker::Name.name,
+    name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "testpassword"
-    # devise sais que password est à encrypter, donc pour tester le password sera "testpassword"
+    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
     )
   if User.last.id.even?
     Psychic.create(
-      localisation: Faker::Address.city,
-      hour_rate: 45,
+      localisation: addresses.sample,
+      hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
       user_id: User.last.id
       )
