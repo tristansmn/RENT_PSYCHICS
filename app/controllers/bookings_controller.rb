@@ -13,11 +13,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.psychic_id = @psychic.id
-    
+
     if @booking.save
       redirect_to booking_path(@booking)
     else
       render :new
+      # redirect_to psychic_path(@psychic), notice: "Sorry, incorrect book form. Please try again!"
     end
   end
 
