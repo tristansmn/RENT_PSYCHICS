@@ -6,12 +6,12 @@
         <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
     <% end %>
     <div class="card-product-infos">
-      <h2>Fortune Teller: <span><%= User.find(@psychic.user_id).name %></span></h2>
-      <p>specialisation in <strong><%= @psychic.specialty %></strong></p>
-      <p>lives in <%= @psychic.localisation %></p>
-      <p><strong>€<%= @psychic.hour_rate %></strong> per hour</p>
+      <h2><%= User.find(@psychic.user_id).name %></h2>
+      <p>specialzed in: </p> <span class="specialty"><%= @psychic.specialty %><i class="fas fa-hand-sparkles"></i></span>
+      <p><i class="fas fa-map-marker-alt"></i> <%= @psychic.localisation %></p>
+      <p><strong>€<%= @psychic.hour_rate %></strong>/hour</p>
     </div>
-    <%= link_to "Book now", new_psychic_booking_path(@psychic), class: "btn btn-flat btn-flexbox-upper-right" %>
+    <%= link_to 'go back to psychics', psychics_path, class: "btn btn-flexbox-upper-right", id: "grey-btn"%>
   </div>
     <% if current_user != nil %>
       <% if @psychic.user_id === current_user.id  %>
@@ -21,10 +21,31 @@
                   psychic_path(@psychic),
                   method: :delete %>
        <% end %>
-  <%= link_to 'go back to psychics', psychics_path, class:"white-btn" %>
+      <% end %>
+
+<div class="d-flex justify-content-center">
+
+<div id="booking-form">
+  <h2>Book <%= User.find(@psychic.user_id).name%> now:</h2>
+       <%= simple_form_for([@psychic, @booking]) do |f| %>
+          <%= f.input :start_date, as: :string, type: :text %>
+          <%= f.input :end_date, as: :string, type: :text%>
+          <%= f.input :nb_accessories, as: :integer, input_html: {value: 0 }%>
+          <%= f.input :total_price, as: :integer, input_html: {value: 135 }%>
+    <table class="table">
+        <tr>
+          <td>€<%= @psychic.hour_rate %> x <span id="hours">/</span> hours</td>
+          <td class="text-right">€<span id="price"></span></td>
+        </tr>
+    </table>
+           <%= f.submit "Book", class: "btn btn-flat" %>
+        <% end %>
+  </div>
 </div>
 
-
+</div>
+<!-- "btn btn-flat btn-flexbox-upper-right" %>
+ -->
 <!-- il faut linker à la bonne route et donc faire la view de booking -->
 
 <!-- des urls de fortune teller: -->
