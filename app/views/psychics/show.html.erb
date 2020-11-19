@@ -1,7 +1,7 @@
 <div id="psychic-bg" class="container">
   <div class="card-product">
 
-    <img src="https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg"/>
+    <%= cl_image_tag @psychic.photo.key, crop: :fill %>
     <div class="card-product-infos">
       <h2>Fortune Teller: <span><%= User.find(@psychic.user_id).name %></span></h2>
       <p>specialisation in <strong><%= @psychic.specialty %></strong></p>
