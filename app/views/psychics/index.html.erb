@@ -1,13 +1,11 @@
-<div>
+<div id="half-fold-purple" class="d-flex flex-column justify-content-center align-items-center">
+    <div><h1> Here are all our great psychics !</h1></div>
+    <div><h2>Have a look to find the one who will bring you some magic...</h2></div>
+</div>
 
-<<<<<<< HEAD
-  <div id="half-fold-purple" class="d-flex flex-column justify-content-center align-items-center" style="position:relative;">
-      <div><h1> Here are all our great psychics !!!</h1></div>
-      <div><h2>have a look to find the one who will make you happy</h2></div>
-  </div>
+<div class="container">
 
-  <div style="background-color: $gray">
-    <div class="container" style="position:absolute; top: 360px; left: 90px; right: 20px">
+    <div style="margin-top: -100px">
       <div class="cards">
         <% @psychics.each do |psychic| %>
             <div class="card-index">
@@ -20,7 +18,7 @@
                 <div class="p-4">
                   <h3><%= psychic.user.name%><%= psychic.user.last_name%></h3>
                   <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
-                  <div class="">
+                  <div>
                     <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
                   </div>
                 </div>
@@ -29,8 +27,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-
 </div>
 
 <!-- whoopy -->
