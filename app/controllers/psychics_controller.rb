@@ -1,6 +1,6 @@
 class PsychicsController < ApplicationController
 
-  before_action :find_psychic, only: [ :show ]
+  before_action :find_psychic, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @psychics = Psychic.all
@@ -24,6 +24,23 @@ class PsychicsController < ApplicationController
   def show
   end
 
+
+  def edit
+  end
+
+  def update
+    @psychic.update(psychic_params)
+    if @psychic.save
+      redirect_to @psychic, notice: 'Psychic profile was successfuly edited'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @psychic.destroy
+    redirect_to psychics_path
+  end
 
   private
 
