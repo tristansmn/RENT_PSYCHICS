@@ -14,7 +14,7 @@ class AccessoriesController < ApplicationController
     if @accessory.save
     	redirect_to psychic_path(@psychic)
     else
-    	render :new
+    	redirect_to psychic_path(@psychic), notice: 'Please try again'
     end
   end
 
