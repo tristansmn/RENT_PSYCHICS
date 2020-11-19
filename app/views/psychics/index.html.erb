@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <div style="margin-top: -100px">
+    <div style="margin-top: -70px">
       <div class="cards">
         <% @psychics.each do |psychic| %>
             <div class="card-index">
@@ -15,10 +15,10 @@
                 <% else %>
                   <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
                 <% end %>
-                <div class="p-4">
+                <div class="card-int">
                   <h3><%= psychic.user.name%><%= psychic.user.last_name%></h3>
                   <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
-                  <div class='d-flex justify-content-end' style="margin-top: 22px">
+                  <div class='d-flex justify-content-end'>
                     <div>
                       <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
                     </div>
