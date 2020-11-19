@@ -1,22 +1,38 @@
-<div id="psychics-bg" class="big-container d-flex justify-content-center">
-  <div class="psychics-container">
+<div>
 
-  <% @psychics.each do |psychic| %>
-    <div class="card-product">
-      <% if psychic.photo.attached? %>
-        <%= cl_image_tag psychic.photo.key, crop: :fill %>
-        <% else %>
-        <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
-      <% end %>
-        <div class="card-product-infos">
-          <span><%= psychic.user.name%> <%= psychic.user.last_name%></span>
-          <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
-          <p><%= link_to 'show psychic', psychic_path(psychic) %></p>
-            <div class="hour-rate">
-              <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
-            </div>
-          </div>
-        </div>
-    <% end %>
+<<<<<<< HEAD
+  <div id="half-fold-purple" class="d-flex flex-column justify-content-center align-items-center" style="position:relative;">
+      <div><h1> Here are all our great psychics !!!</h1></div>
+      <div><h2>have a look to find the one who will make you happy</h2></div>
   </div>
+
+  <div style="background-color: $gray">
+    <div class="container" style="position:absolute; top: 360px; left: 90px; right: 20px">
+      <div class="cards">
+        <% @psychics.each do |psychic| %>
+            <div class="card-index">
+              <%= link_to psychic_path(psychic) do %>
+                <% if psychic.photo.attached? %>
+                  <%= cl_image_tag psychic.photo.key, crop: :fill %>
+                <% else %>
+                  <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+                <% end %>
+                <div class="p-4">
+                  <h3><%= psychic.user.name%><%= psychic.user.last_name%></h3>
+                  <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>
+                  <div class="">
+                    <p><strong>€<%= psychic.hour_rate %></strong>/hour</p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<!-- whoopy -->
+<!-- https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg -->
+<!-- https://source.unsplash.com/random -->

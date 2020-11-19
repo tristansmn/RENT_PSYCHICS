@@ -13,7 +13,8 @@
     </div>
     <%= link_to "Book now", new_psychic_booking_path(@psychic), class: "btn btn-flat btn-flexbox-upper-right" %>
   </div>
-    <% if @psychic.user_id === current_user.id  %>
+    <% if current_user != nil %>
+      <% if @psychic.user_id === current_user.id  %>
         <%= link_to "Edit", edit_psychic_path(@psychic), class: "btn btn-flat btn-card-show-psychic" %>
         <div class= "btn btn-flat btn-card-show-psychic",>
         <%= link_to "Delete",
