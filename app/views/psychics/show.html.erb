@@ -1,7 +1,10 @@
 <div id="psychic-bg" class="container">
   <div class="card-product">
-
-    <%= cl_image_tag @psychic.photo.key, crop: :fill %>
+    <% if @psychic.photo.attached? %>
+        <%= cl_image_tag @psychic.photo.key, crop: :fill %>
+        <% else %>
+        <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+    <% end %>
     <div class="card-product-infos">
       <h2>Fortune Teller: <span><%= User.find(@psychic.user_id).name %></span></h2>
       <p>specialisation in <strong><%= @psychic.specialty %></strong></p>

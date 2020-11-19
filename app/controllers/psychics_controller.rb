@@ -32,6 +32,6 @@ class PsychicsController < ApplicationController
   end
 
   def psychic_params
-    params.require(:psychic).permit(:specialty, :localisation, :hour_rate)
+    params.require(:psychic).permit(:specialty, :localisation, :hour_rate, :photo)
   end
 end
