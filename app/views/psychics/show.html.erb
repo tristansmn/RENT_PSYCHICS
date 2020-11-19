@@ -10,19 +10,49 @@
       <p>specialisation in <strong><%= @psychic.specialty %></strong></p>
       <p>lives in <%= @psychic.localisation %></p>
       <p><strong>€<%= @psychic.hour_rate %></strong> per hour</p>
+      <br>
+      <h5><strong><%= User.find(@psychic.user_id).name %>'s accessories:</strong></h4>
+      <div>
+        <% @psychic.accessories.each do |accessory| %>
+        <p><%= accessory.name %>: <%= accessory.price %>€</p>
+        <% end %>
+      </div>
+      <br>
     </div>
     <%= link_to "Book now", new_psychic_booking_path(@psychic), class: "btn btn-flat btn-flexbox-upper-right" %>
   </div>
     <% if current_user != nil %>
       <% if @psychic.user_id === current_user.id  %>
         <%= link_to "Edit", edit_psychic_path(@psychic), class: "btn btn-flat btn-card-show-psychic" %>
-        <div class= "btn btn-flat btn-card-show-psychic",>
+        <div class= "btn btn-flat btn-card-show-psychic">
         <%= link_to "Delete",
                   psychic_path(@psychic),        
                   method: :delete %>
+        </div>
+        <button type="button" class="btn btn-flat btn-card-show-psychic" data-toggle="modal" data-target="#addAccessory">
+        Add accessories to your profile
+        </button>
+        <div class="modal fade" id="addAccessory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add an accessory</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [@psychic, @accessory] do |f| %>
+                  <%= f.input :name, as: :string, label: false, placeholder: 'What is your accessory'%>
+                  <%= f.input :price, as: :numeric, label: false, placeholder: 'Price'%>
+                  <%= f.submit class: "btn btn-sm btn-outline-primary rounded-pill"%>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
        <% end %>
-    <%end%>
-       </div>
+    <%end%>      
 </div>
 
 <!-- il faut linker à la bonne route et donc faire la view de booking -->

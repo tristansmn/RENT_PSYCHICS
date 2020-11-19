@@ -22,6 +22,7 @@ class PsychicsController < ApplicationController
   end
 
   def show
+    @accessory = Accessory.new
   end
 
 
