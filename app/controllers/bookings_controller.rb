@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.psychic_id = @psychic.id
-    
+
     if @booking.save
       redirect_to booking_path(@booking)
     else
