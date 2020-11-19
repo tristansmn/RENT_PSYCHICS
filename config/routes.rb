@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :psychics, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
     resources :bookings, only: [:new, :create]
+    resources :accessories
   end
 
   resources :bookings, only: [:show, :edit, :update]
