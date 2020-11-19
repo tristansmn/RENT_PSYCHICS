@@ -1,7 +1,10 @@
 <div id="psychic-bg" class="container">
   <div class="card-product">
-
-    <img src="https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg"/>
+    <% if @psychic.photo.attached? %>
+        <%= cl_image_tag @psychic.photo.key, crop: :fill %>
+        <% else %>
+        <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+    <% end %>
     <div class="card-product-infos">
       <h2>Fortune Teller: <span><%= User.find(@psychic.user_id).name %></span></h2>
       <p>specialisation in <strong><%= @psychic.specialty %></strong></p>
@@ -10,6 +13,16 @@
     </div>
     <%= link_to "Book now", new_psychic_booking_path(@psychic), class: "btn btn-flat btn-flexbox-upper-right" %>
   </div>
+    <% if current_user != nil %>
+      <% if @psychic.user_id === current_user.id  %>
+        <%= link_to "Edit", edit_psychic_path(@psychic), class: "btn btn-flat btn-card-show-psychic" %>
+        <div class= "btn btn-flat btn-card-show-psychic",>
+        <%= link_to "Delete",
+                  psychic_path(@psychic),        
+                  method: :delete %>
+       <% end %>
+    <%end%>
+       </div>
 </div>
 
 <!-- il faut linker à la bonne route et donc faire la view de booking -->

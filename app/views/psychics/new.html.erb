@@ -1,0 +1,11 @@
+<h1>Hello</h1>
+
+<div id='new-psychic-profile'>
+       <%= simple_form_for(@psychic) do |f| %>
+          <%= f.input :specialty, as: :string, label: false, type: :text, placeholder: 'Precise your specialty' %>
+          <%= f.input :hour_rate, as: :numeric, label: false, placeholder: 'Enter your price per hour'%>
+          <%= f.input :localisation, as: :string, label: false, placeholder: 'Precise your city' %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit "Create your psychic profile!", class: "btn btn-primary" %>
+       <% end %>
+ </div>

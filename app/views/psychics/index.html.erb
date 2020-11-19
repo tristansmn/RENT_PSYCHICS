@@ -1,5 +1,6 @@
 <div>
 
+<<<<<<< HEAD
   <div id="half-fold-purple" class="d-flex flex-column justify-content-center align-items-center" style="position:relative;">
       <div><h1> Here are all our great psychics !!!</h1></div>
       <div><h2>have a look to find the one who will make you happy</h2></div>
@@ -11,7 +12,11 @@
         <% @psychics.each do |psychic| %>
             <div class="card-index">
               <%= link_to psychic_path(psychic) do %>
-                <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+                <% if psychic.photo.attached? %>
+                  <%= cl_image_tag psychic.photo.key, crop: :fill %>
+                <% else %>
+                  <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+                <% end %>
                 <div class="p-4">
                   <h3><%= psychic.user.name%><%= psychic.user.last_name%></h3>
                   <p><i class="fas fa-map-marker-alt"></i> <%= psychic.localisation %></p>

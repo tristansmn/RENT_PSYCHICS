@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # resources :users
   # plus la peine d'avoir le controller user si pas de nesting (car déjà devise)
 
-  resources :psychics, only: [:index, :show, :create, :new] do
+  resources :psychics, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
     resources :bookings, only: [:new, :create]
+    resources :accessories
   end
 
   resources :bookings, only: [:show, :edit, :update]
