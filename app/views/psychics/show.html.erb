@@ -1,4 +1,4 @@
-<div id="psychic-bg" class="container">
+<div class="psychic-container">
   <div class="card-product">
     <% if @psychic.photo.attached? %>
         <%= cl_image_tag @psychic.photo.key, crop: :fill %>
@@ -17,11 +17,12 @@
         <%= link_to "Edit", edit_psychic_path(@psychic), class: "btn btn-flat btn-card-show-psychic" %>
         <div class= "btn btn-flat btn-card-show-psychic",>
         <%= link_to "Delete",
-                  psychic_path(@psychic),        
+                  psychic_path(@psychic),
                   method: :delete %>
        <% end %>
-       </div>
+  <%= link_to 'go back to psychics', psychics_path, class:"white-btn" %>
 </div>
+
 
 <!-- il faut linker à la bonne route et donc faire la view de booking -->
 
