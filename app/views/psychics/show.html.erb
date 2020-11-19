@@ -6,7 +6,10 @@
         <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
     <% end %>
     <div class="card-product-infos">
+      <div class="d-flex flex-row">
         <h2><%= User.find(@psychic.user_id).name %></h2>
+        <%= link_to 'go back to psychics', psychics_path, class: "btn btn-flexbox-upper-right", id: "grey-btn"%>
+      </div>
         <p>specialzed in: </p> <span class="specialty"><%= @psychic.specialty %><i class="fas fa-hand-sparkles"></i></span>
         <p><i class="fas fa-map-marker-alt"></i> <%= @psychic.localisation %></p>
         <p><strong>€<%= @psychic.hour_rate %></strong>/hour</p>
@@ -15,10 +18,7 @@
             <% @psychic.accessories.each do |accessory| %>
               <p><%= accessory.name %>: <%= accessory.price %>€</p>
             <% end %>
-        <% end %>  
-    </div>
-    <div>
-      <%= link_to 'go back to psychics', psychics_path, class: "btn btn-flexbox-upper-right", id: "grey-btn"%>
+        <% end %>
     </div>
   </div>
 

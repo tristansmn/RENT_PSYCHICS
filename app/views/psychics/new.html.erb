@@ -1,11 +1,17 @@
-<h1>Hello</h1>
+<div class="psychic-form-container">
 
-<div id='new-psychic-profile'>
+
+<h1>Interested in renting your precious psychic powers? Join us!</h1>
+  <div id="add-form" class="d-flex justify-content-center">
+    <div id='new-psychic-profile'>
        <%= simple_form_for(@psychic) do |f| %>
-          <%= f.input :specialty, as: :string, label: false, type: :text, placeholder: 'Precise your specialty' %>
-          <%= f.input :hour_rate, as: :numeric, label: false, placeholder: 'Enter your price per hour'%>
-          <%= f.input :localisation, as: :string, label: false, placeholder: 'Precise your city' %>
+          <%= f.input :specialty, collection: Psychic::SPEC, label:false, prompt: "Select your specialty" %>
+         <!--  <=%= f.input :specialty, as: :string, label: false, type: :text, placeholder: 'Precise your specialty' %> -->
+          <%= f.input :hour_rate, as: :numeric, label: false, placeholder: 'Enter your price per hour (in €)'%>
+          <%= f.input :localisation, as: :string, label: false, placeholder: 'Precise your address' %>
           <%= f.input :photo, as: :file %>
-          <%= f.submit "Create your psychic profile!", class: "btn btn-primary" %>
+          <%= f.submit "Create your psychic profile", class: "btn btn-flat" %>
        <% end %>
- </div>
+       </div>
+  </div>
+</div>

@@ -78,6 +78,7 @@
   font-weight: bold;
   margin: 0;
   padding-bottom: 3px;
+  color: $purple;
 }
 
 .card-product p {
@@ -85,6 +86,7 @@
   line-height: 1.4;
   opacity: .7;
   margin-top: 10px;
+  color: $purple;
 }
 
 .card-product .card-product-infos {
@@ -93,7 +95,7 @@
 }
 
 .card-product-infos span {
-  font-size: 35px;
+  font-size: 30px;
   color: $purple;
 }
 

@@ -1,12 +1,19 @@
-<h1>Hello</h1>
-<div class="d-flex justify-content-center">
-	<div class='booking-form'>
-	  <%= simple_form_for(@psychic) do |f| %>
-	    <%= f.input :specialty, as: :string, label: false, type: :text, placeholder: 'Precise your specialty' %>
-	    <%= f.input :hour_rate, as: :numeric, label: false, placeholder: 'Enter your price per hour'%>
-	    <%= f.input :localisation, as: :string, label: false, placeholder: 'Precise your city' %>
-	    <%= f.input :photo, as: :file %>
-	    <%= f.submit "Create your psychic profile!", class: "btn btn-primary" %>
-	  <% end %>
-	 </div>
+<div class="edit-form-container">
+
+  <div id="add-form" class="d-flex justify-content-center">
+    <div id='edit-psychic-profile'>
+        <h1>Modify your profile anytime here:</h1>
+      <div class="d-flex justify-content-center">
+      	<div id='edit-form'>
+          <%= simple_form_for(@psychic) do |f| %>
+            <%= f.input :specialty, collection: Psychic::SPEC, prompt: "Select your specialty" %>
+            <%= f.input :hour_rate, as: :numeric, placeholder: 'Enter your price per hour (in €)'%>
+            <%= f.input :localisation, as: :string, placeholder: 'Precise your address' %>
+            <%= f.input :photo, as: :file %>
+            <%= f.submit "Create your psychic profile", class: "btn btn-flat" %>
+          <% end %>
+      	 </div>
+      </div>
+  </div>
+</div>
 </div>
