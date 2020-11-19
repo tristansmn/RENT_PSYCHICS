@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
       redirect_to booking_path(@booking)
     else
       render :new
+      # redirect_to psychic_path(@psychic), notice: "Sorry, incorrect book form. Please try again!"
     end
   end
 

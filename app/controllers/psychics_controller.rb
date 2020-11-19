@@ -23,6 +23,7 @@ class PsychicsController < ApplicationController
 
   def show
     @accessory = Accessory.new
+    @booking = Booking.new
   end
 
 

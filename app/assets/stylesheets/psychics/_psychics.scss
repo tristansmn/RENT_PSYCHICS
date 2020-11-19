@@ -1,3 +1,14 @@
 #psychics-bg {
 background-color: $light-purple;
 }
+
+#half-fold-purple {
+background: rgb(80,64,103);
+background: linear-gradient(0deg, rgba(80,64,103,1) 0%, rgba(50,6,113,1) 62%);
+height: 40vh;
+}
+
+#background-dark {
+  background-color: $gray;
+  color: white;
+}

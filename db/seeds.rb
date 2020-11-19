@@ -19,7 +19,7 @@ Booking.destroy_all if Rails.env.development?
 accessories = %w(CrystalBall MagicTea, Van Cat Ghost AK47)
 specialties = %w(blackMagic Voodoo Karma Visions Ghosts)
 
-10.times do
+20.times do
   User.create(
     name: Faker::Name.name,
     last_name: Faker::Name.name,
