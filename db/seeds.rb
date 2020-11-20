@@ -16,8 +16,8 @@ User.destroy_all if Rails.env.development?
 Accessory.destroy_all if Rails.env.development?
 Booking.destroy_all if Rails.env.development?
 
-accessories = %w(CrystalBall MagicTea Van Cat Ghost AK47)
-specialties = %w(blackMagic Voodoo KarmaBooster Visions Ghosts)
+accessories = %w(CrystalBall MagicTea Van Cat Ghost AK47 Cards OuijaBoard)
+specialties = %w(blackMagic Voodoo KarmaBooster Visions Ghosts Tarot Divination AstralProjection EnergyMedicine)
 addresses = [
   "20 rue de la pompe Paris",
   "2 avenue des champs elysees Paris",
