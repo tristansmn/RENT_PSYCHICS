@@ -34,8 +34,8 @@
             <%= simple_form_for([@psychic, @booking]) do |f| %>
               <%= f.input :start_date, as: :string, label: false, type: :text,  placeholder: 'From' %>
               <%= f.input :end_date, as: :string, label: false, type: :text,   placeholder: 'To'%> 
-              <%= f.input :total_price, as: :numeric %>
-              <%= f.input :nb_accessories, as: :numeric %>
+              <%= f.input :total_price, as: :hidden  %>
+              <%= f.input :nb_accessories, as: :hidden %>
               <% if @psychic.accessories != [] %>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accessoryBooking">Add accessories</button>
               <%end%>
