@@ -9,7 +9,7 @@ class Psychic < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [:specialty, :localisation],
-      associated_against: {user: [:name], accessories: [:name]},
+      associated_against: {user: [:name, :last_name], accessories: [:name]},
     using: {
       tsearch: { prefix: true }
     }
