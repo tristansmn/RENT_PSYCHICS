@@ -19,7 +19,7 @@
                 <% if psychic.photo.attached? %>
                   <%= cl_image_tag psychic.photo.key, crop: :pad %>
                 <% else %>
-                  <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
+                  <img src='https://source.unsplash.com/1600x900/?photos,portrait'/>
                 <% end %>
                 <div class="card-int">
                   <h3><%= psychic.user.name%> <%= psychic.user.last_name%></h3>

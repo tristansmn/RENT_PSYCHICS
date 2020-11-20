@@ -20,16 +20,16 @@ Booking.destroy_all if Rails.env.development?
 accessories = %w(CrystalBall MagicTea Van Cat Ghost AK47 Cards OuijaBoard)
 specialties = %w(blackMagic Voodoo KarmaBooster Visions Ghosts Tarot Divination AstralProjection EnergyMedicine)
 addresses = [
-  "20 rue de la pompe Paris",
-  "2 avenue des champs elysees Paris",
-  "Kensington Gardens London ",
+  "20, Rue de la Pompe Paris",
+  "2, Avenue des Champs Elysees Paris",
+  "Kensington Gardens, London ",
   "Calle Irlanda 28019 Madrid"
   ]
 puts "création des seeds user et psychic"
 puts "------------------------------------"
 
 antoine = User.create(
-    name: "Antoine",
+    name: "Antoinette",
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "testpassword"
@@ -61,7 +61,46 @@ michel = User.create(
     )
 
 gege = User.create(
-    name: "Gérard",
+    name: "Gerard",
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testpassword"
+    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
+    )
+
+dany = User.create(
+    name: "Dany",
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testpassword"
+    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
+    )
+
+sam = User.create(
+    name: "Sam",
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testpassword"
+    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
+    )
+
+lee = User.create(
+    name: "Lee",
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testpassword"
+    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
+    )
+
+alex = User.create(
+    name: "Alex",
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testpassword"
+    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
+    )
+jessy = User.create(
+    name: "Jessy",
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "testpassword"
@@ -71,7 +110,7 @@ gege = User.create(
 puts "Creating psychic profiles"
 puts "------------------------------------"
 
-file = URI.open('https://res.cloudinary.com/antoine83/image/upload/v1605867886/4alku05tg0no68ce7kqx74rn5ax5.jpg')
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605882430/photo-1543430720-fa600c67e423_gc7693.jpg')
 genius = Psychic.new({localisation: addresses.sample,
       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
@@ -80,7 +119,7 @@ genius.user = antoine
 genius.photo.attach(io: file, filename: '#{genius.user.name}.jpg', content_type: 'image/jpg')
 genius.save!
 
-file = URI.open('https://res.cloudinary.com/antoine83/image/upload/v1605870978/psychic_of0o8v.jpg')
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605880828/khrjhhhwn7zggw88x5w0yw1v38qa.jpg')
 whoopy = Psychic.new({localisation: addresses.sample,
       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
@@ -89,7 +128,7 @@ whoopy.user = manon
 whoopy.photo.attach(io: file, filename: '#{whoopy.user.name}.jpg', content_type: 'image/jpg')
 whoopy.save!
 
-file = URI.open('https://res.cloudinary.com/antoine83/image/upload/v1605871005/photo-1600637453426-7c64826b19d9_o7o5nr.jpg')
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605880848/4j8sm3j8jm86lpefjo29km1eisha.jpg')
 wizzard = Psychic.new({localisation: addresses.sample,
       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
@@ -98,7 +137,7 @@ wizzard.user = tristan
 wizzard.photo.attach(io: file, filename: '#{wizzard.user.name}.jpg', content_type: 'image/jpg')
 wizzard.save!
 
-file = URI.open('https://res.cloudinary.com/antoine83/image/upload/v1605870930/photo-1582744709859-2d89c6920cfb_vttgrm.jpg')
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605880821/frz4r9gsb9vlvciwqyvd6ebhsaz6.jpg')
 cards = Psychic.new({localisation: addresses.sample,
       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
@@ -107,7 +146,7 @@ cards.user = michel
 cards.photo.attach(io: file, filename: '#{cards.user.name}.jpg', content_type: 'image/jpg')
 cards.save!
 
-file = URI.open('https://res.cloudinary.com/antoine83/image/upload/v1605870912/photo-1592215955539-f020e64a7125_niq7zc.jpg')
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605880836/cia9vv9ho5keukbr1ojtxwlssu14.jpg')
 zoltar = Psychic.new({localisation: addresses.sample,
       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
@@ -116,25 +155,70 @@ zoltar.user = gege
 zoltar.photo.attach(io: file, filename: '#{zoltar.user.name}.jpg', content_type: 'image/jpg')
 zoltar.save!
 
-
-
-6.times do
-  User.create(
-    name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: "testpassword"
-    # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
-    )
-  if User.last.id.even?
-    Psychic.create(
-      localisation: addresses.sample,
+file = URI.open('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80')
+zoltar = Psychic.new({localisation: addresses.sample,
       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
       specialty: specialties[rand(0..(specialties.length - 1))],
-      user_id: User.last.id
-      )
-  end
-end
+      user_id: dany.id})
+zoltar.user = dany
+zoltar.photo.attach(io: file, filename: '#{zoltar.user.name}.jpg', content_type: 'image/jpg')
+zoltar.save!
+
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605882705/photo-1519975258993-60b42d1c2ee2_ckhq3o.jpg')
+zoltar = Psychic.new({localisation: addresses.sample,
+      hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
+      specialty: specialties[rand(0..(specialties.length - 1))],
+      user_id: sam.id})
+zoltar.user = sam
+zoltar.photo.attach(io: file, filename: '#{zoltar.user.name}.jpg', content_type: 'image/jpg')
+zoltar.save!
+
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605881136/k156f4iejh27bysq5vh4rloe7fyh.jpg')
+zoltar = Psychic.new({localisation: addresses.sample,
+      hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
+      specialty: specialties[rand(0..(specialties.length - 1))],
+      user_id: lee.id})
+zoltar.user = lee
+zoltar.photo.attach(io: file, filename: '#{zoltar.user.name}.jpg', content_type: 'image/jpg')
+zoltar.save!
+
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605881809/d0a9cv3qecviin4hqiv5pu7337h1.jpg')
+zoltar = Psychic.new({localisation: addresses.sample,
+      hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
+      specialty: specialties[rand(0..(specialties.length - 1))],
+      user_id: alex.id})
+zoltar.user = alex
+zoltar.photo.attach(io: file, filename: '#{zoltar.user.name}.jpg', content_type: 'image/jpg')
+zoltar.save!
+
+file = URI.open('https://res.cloudinary.com/du9wezv2c/image/upload/v1605881141/akjwpgvedn3tnu7ng36826pg3w9h.jpg')
+zoltar = Psychic.new({localisation: addresses.sample,
+      hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
+      specialty: specialties[rand(0..(specialties.length - 1))],
+      user_id: jessy.id})
+zoltar.user = jessy
+zoltar.photo.attach(io: file, filename: '#{zoltar.user.name}.jpg', content_type: 'image/jpg')
+zoltar.save!
+
+
+
+# 6.times do
+#   User.create(
+#     name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     password: "testpassword"
+#     # devise sait que "password" est à encrypter, donc pour tester on peut mettre password: (et ce sera "testpassword" le set up)
+#     )
+#   if User.last.id.even?
+#     Psychic.create(
+#       localisation: addresses.sample,
+#       hour_rate: [45 , 50, 55, 60, 70, 80, 2500].sample,
+#       specialty: specialties[rand(0..(specialties.length - 1))],
+#       user_id: User.last.id
+#       )
+#   end
+# end
 
 puts "création des seeds accessoires"
 puts "------------------------------------"
