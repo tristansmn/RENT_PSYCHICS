@@ -4,19 +4,19 @@ class PsychicsController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = " \
-        psychics.specialty ILIKE :query \
-        OR psychics.localisation ILIKE :query \
-
-        OR users.name ILIKE :query \
-      "
-      @psychics = Psychic.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      # les lignes commentees c'est pour faire en sql et pas en pgsearch
+      # sql_query = " \
+      #   psychics.specialty ILIKE :query \
+      #   OR psychics.localisation ILIKE :query \
+      #   OR accessories.name ILIKE :query \
+      #   OR users.name ILIKE :query \
+      # "
+      # @psychics = Psychic.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      @psychics = Psychic.global_search(params[:query])
     else
       @psychics = Psychic.all
     end
   end
-# OR accessories.name ILIKE :query \
-  # .joins(:accessory)
 
   def new
   	@psychic = Psychic.new
