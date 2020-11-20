@@ -29,7 +29,7 @@
          <h2>Book <%= User.find(@psychic.user_id).name%> now:</h2>
             <%= simple_form_for([@psychic, @booking]) do |f| %>
               <%= f.input :start_date, as: :string, label: false, type: :text,  placeholder: 'From' %>
-              <%= f.input :end_date, as: :string, label: false, type: :text,   placeholder: 'To'%> 
+              <%= f.input :end_date, as: :string, label: false, type: :text,   placeholder: 'To'%>
               <%= f.input :total_price, as: :integer, input_html: {value: 135 }%>
               <% if @psychic.accessories != nil %>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accessoryBooking">Add accessories to your booking</button>
@@ -45,7 +45,7 @@
               <%= f.submit "Book", class: "btn btn-flat" %>
               </div>
             <% end %>
-              
+
       <%else%>
             <button type="button" class="btn btn-flat btn-card-show-psychic" data-toggle="modal" data-target="#edit">
             Edit
@@ -78,9 +78,9 @@
                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     <%= accessory.name %>: <%= accessory.price %>€
-                  </label> 
-                </div> 
-              <%end%> 
+                  </label>
+                </div>
+              <%end%>
               <br>
               <button type="submit" id="add" class="btn btn-sm btn-outline-primary rounded-pill">Add</button>
         </div>
