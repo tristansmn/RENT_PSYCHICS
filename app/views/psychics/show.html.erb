@@ -1,3 +1,5 @@
+<!-- Card of the page : information about psychic -->
+
 <div class="psychic-container">
   <div class="card-product">
     <% if @psychic.photo.attached? %>
@@ -16,11 +18,13 @@
         <% if @psychic.accessories != [] %>
           <p><strong><%= User.find(@psychic.user_id).name %>'s accessories:</strong></p>
             <% @psychic.accessories.each do |accessory| %>
-              <p><%= accessory.name %>: <%= accessory.price %>€</p>
+              <li><%= accessory.name %></li>
             <% end %>
         <% end %>
     </div>
   </div>
+
+<!-- User action --> 
 
   <div class="d-flex justify-content-center">
     <div id="booking-form">
@@ -31,21 +35,25 @@
               <%= f.input :start_date, as: :string, label: false, type: :text,  placeholder: 'From' %>
               <%= f.input :end_date, as: :string, label: false, type: :text,   placeholder: 'To'%> 
               <%= f.input :total_price, as: :integer, input_html: {value: 135 }%>
-              <% if @psychic.accessories != nil %>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accessoryBooking">Add accessories to your booking</button>
+              <% if @psychic.accessories != [] %>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accessoryBooking">Add accessories</button>
               <%end%>
               <br>
               <br>
               <div>
-                <td>€<span id="price_per_hour"><%= @psychic.hour_rate %></span> x <span id="hours">0</span> hours:</td>
-                <td class="text-right"><span id="price">0</span>€</td>
+                <td><span id="price_per_hour"><%= @psychic.hour_rate %></span>€ x <span id="hours">0</span> hours:</td>
+                <td><span id="price">0</span>€</td>
               </div>
+              <div class=accessory-display>
+                <td>10€ x <span class="number_accessory">0</span><span class="accessory"> accessory:</span></td>
+                <td><span class="price_accessory">0</span>€</td>
+              </div>        
               <div>
               <br>
               <%= f.submit "Book", class: "btn btn-flat" %>
               </div>
             <% end %>
-              
+            </div>
       <%else%>
             <button type="button" class="btn btn-flat btn-card-show-psychic" data-toggle="modal" data-target="#edit">
             Edit
@@ -63,30 +71,46 @@
   </div>
 </div>
 
+<!-- MODALS for user action -->
+
+
+<!-- ADD ACCESSORY - BOOKING -->
+
 <div class="modal fade" id="accessoryBooking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Accessories</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add accessories to your booking</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
           <div class="modal-body">
-              <% @psychic.accessories.each do |accessory| %>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    <%= accessory.name %>: <%= accessory.price %>€
-                  </label> 
-                </div> 
-              <%end%> 
+              <p> Fixed price per accessory : 10 € </p>
+              <div class = "check">
+                <% @psychic.accessories.each do |accessory| %>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" remote = "true">
+                    <label class="form-check-label" for="defaultCheck1">
+                      <%= accessory.name %>
+                    </label> 
+                  </div> 
+              <%end%>
               <br>
-              <button type="submit" id="add" class="btn btn-sm btn-outline-primary rounded-pill">Add</button>
+              </div> 
+              <div id=accessory-display>
+                <td>10€ x <span class="number_accessory">0</span><span class="accessory"> accessory:</span></td>
+                <td><span class="price_accessory">0</span>€</td>
+              </div>          
+              <br>
+              <button type="submit" id="add-accessory" data-dismiss="modal" class="btn btn-sm btn-outline-primary rounded-pill">Add</button>
         </div>
       </div>
     </div>
   </div>
+
+<!-- ADD ACCESSORY - PSYCHIC -->
+
   <div class="modal fade" id="addAccessory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -97,15 +121,18 @@
           </button>
         </div>
           <div class="modal-body">
-            <%= simple_form_for [@psychic, @accessory] do |f| %>
-              <%= f.input :name, as: :string, label: false, placeholder: 'What is your accessory'%>
-              <%= f.input :price, as: :numeric, label: false, placeholder: 'Price'%>
-              <%= f.submit class: "btn btn-sm btn-outline-primary rounded-pill"%>
-            <% end %>
+              <%= simple_form_for [@psychic, @accessory] do |f| %>
+                <%= f.input :name, collection: Accessory::ACCESS , label:false, prompt: "Select your specialty"%>
+                <p> Each accessory has fixed price : 10 € </p>
+                <%= f.input :price, as: :hidden, input_html: { value: 10 } %>
+                <%= f.submit "Edit", class: "btn btn-sm btn-outline-primary rounded-pill" %>
+              <%end%>
         </div>
       </div>
     </div>
   </div>
+
+<!-- EDIT PSYCHIC PROFIL -->
 
   <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

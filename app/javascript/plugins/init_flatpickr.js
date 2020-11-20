@@ -36,6 +36,24 @@ const initFlatpickr = () => {
   }
 });
 })
+
+$('.accessory-display').css('display', 'none');
+
+const $checkboxes = $('.form-check input[type="checkbox"]')
+$checkboxes.change(function(){
+        let countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+        $('.number_accessory').text(countCheckedCheckboxes);
+        $('.price_accessory').text(countCheckedCheckboxes * 10);
+        if (countCheckedCheckboxes >= 1) {
+        $('.accessory-display').css('display', 'block');
+        $('.accessory').text(" accessories:");
+        } else {
+        $('.accessory').text(" accessory:");
+        };
+        console.log(countCheckedCheckboxes)
+    });
+
+
 }
 export { initFlatpickr };
 
