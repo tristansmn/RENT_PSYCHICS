@@ -7,6 +7,8 @@ const initFlatpickr = () => {
   const hours = document.querySelector("#hours")
   const pricePerHour = document.querySelector("#price_per_hour").innerText
   const price = document.querySelector("#price") 
+  const totalPrice = document.querySelector("#booking_total_price")
+  const nbAccessories = document.querySelector("#booking_nb_accessories")
 
   // Check that the query selector id matches the one you put around your form.
   if (startDateInput) {
@@ -26,18 +28,19 @@ const initFlatpickr = () => {
     })
 };
 
+$('.accessory-display').css('display', 'none');
+
 [startDateInput, endDateInput].forEach(date => {
   date.addEventListener("change", (event) => {
   let dateDiff = new Date(endDateInput.value) - new Date(startDateInput.value);
-  let totalHours = Math.ceil(dateDiff / (86400000 / 24));
+  const totalHours = Math.ceil(dateDiff / (86400000 / 24));
   if (startDateInput.value && endDateInput.value) {
     hours.innerText = totalHours
     price.innerText = totalHours * pricePerHour
+    $('#total-price').text(totalHours * pricePerHour)
+    totalPrice.setAttribute('value',(totalHours * pricePerHour));
   }
-});
-})
-
-$('.accessory-display').css('display', 'none');
+    
 
 const $checkboxes = $('.form-check input[type="checkbox"]')
 $checkboxes.change(function(){
@@ -50,10 +53,13 @@ $checkboxes.change(function(){
         } else {
         $('.accessory').text(" accessory:");
         };
-        console.log(countCheckedCheckboxes)
+        $('#total-price').text((totalHours * pricePerHour) + (countCheckedCheckboxes * 10));
+        totalPrice.setAttribute('value',((totalHours * pricePerHour) + (countCheckedCheckboxes * 10)));
+        nbAccessories.setAttribute('value',(countCheckedCheckboxes));
+
     });
-
-
+});
+})
 }
 export { initFlatpickr };
 
