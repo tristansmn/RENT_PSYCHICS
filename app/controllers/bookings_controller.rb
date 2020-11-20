@@ -38,6 +38,10 @@ class BookingsController < ApplicationController
     #   par exemple si le FT peut updater le statut et le user updater la date du booking?
   end
 
+  def delete
+
+  end
+
   private
 
   def find_booking

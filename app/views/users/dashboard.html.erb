@@ -1,0 +1,29 @@
+<div class="dashboard-bg">
+
+  <div class="intro text-center p-4" style="color:lightgrey;">
+    <h1>Hello <%= @user.name %></h1>
+    <h2>Here are the current bookings you made for psychics:</h2>
+  </div>
+
+  <div class="bookings-container p-4">
+    <% @bookings.each do |booking| %>
+    <div class="container p-3 mb-3" style="border: solid 1px lightgrey; border-radius: 5px;">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="infos">
+            <h3><p><%= booking.psychic.user.name %></p></h3>
+            <p>Start date: <%= booking.start_date %><p>
+            <p>End date: <%= booking.end_date %></p>
+            <p>Number of accessories: <%= booking.nb_accessories %></p>
+            <p>Total price: €<%= booking.total_price %></p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 d-flex justify-content-center">
+          <p>Booking status:</p><div class="status"><%=booking.status%></div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>
