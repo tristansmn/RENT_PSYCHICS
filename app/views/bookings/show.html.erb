@@ -14,7 +14,13 @@
     <ul>
       <li>Start date: <%= @booking.start_date %></li>
       <li>End date: <%= @booking.end_date %></li>
-      <li>Accessories: @booking.nb_accessories</li>
+      <li>Accessories:
+      <% if @booking.nb_accessories != nil %>
+        <% @booking.nb_accessories%>
+      <% else %>
+      0
+      <% end %>
+      </li>
       <li>Total price: <%= @booking.total_price %>€</li>
       <li> Status:<div class="status"><%= @booking.status%></div></li>
     </ul>
