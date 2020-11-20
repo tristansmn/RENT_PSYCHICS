@@ -1,0 +1,22 @@
+#search-form form {
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+}
+
+#search-input {
+  width: 80%;
+}
+
+#search-submit {
+  color: white;
+  // border-radius: 4px;
+  background: #538d22;
+  border-color: #538d22;
+}
+
+#search-submit:hover {
+  background: #73a942;
+  border-color: #73a942;
+  color: white;
+}
