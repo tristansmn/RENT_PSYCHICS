@@ -35,10 +35,17 @@ $('.accessory-display').css('display', 'none');
   let dateDiff = new Date(endDateInput.value) - new Date(startDateInput.value);
   const totalHours = Math.ceil(dateDiff / (86400000 / 24));
   if (startDateInput.value && endDateInput.value) {
-    hours.innerText = totalHours
-    price.innerText = totalHours * pricePerHour
-    $('#total-price').text(totalHours * pricePerHour)
-    totalPrice.setAttribute('value',(totalHours * pricePerHour));
+    if (totalHours > 0) { 
+      hours.innerText = totalHours
+      price.innerText = totalHours * pricePerHour
+      $('#total-price').text(totalHours * pricePerHour)
+      totalPrice.setAttribute('value',(totalHours * pricePerHour));
+    } else {
+      hours.innerText = 0
+      price.innerText = 0
+      $('#total-price').text(0)
+      totalPrice.setAttribute('value',(0)); 
+    }
   }
     
 
@@ -53,10 +60,14 @@ $checkboxes.change(function(){
         } else {
         $('.accessory').text(" accessory:");
         };
-        $('#total-price').text((totalHours * pricePerHour) + (countCheckedCheckboxes * 10));
-        totalPrice.setAttribute('value',((totalHours * pricePerHour) + (countCheckedCheckboxes * 10)));
-        nbAccessories.setAttribute('value',(countCheckedCheckboxes));
-
+        if (totalHours > 0 ) {
+          $('#total-price').text((totalHours * pricePerHour) + (countCheckedCheckboxes * 10));
+          totalPrice.setAttribute('value',((totalHours * pricePerHour) + (countCheckedCheckboxes * 10)));
+          nbAccessories.setAttribute('value',(countCheckedCheckboxes));
+        } else {
+          $('#total-price').text(0);
+          nbAccessories.setAttribute('value',(countCheckedCheckboxes));
+        }
     });
 });
 })
