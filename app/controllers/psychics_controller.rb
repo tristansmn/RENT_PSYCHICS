@@ -3,8 +3,20 @@ class PsychicsController < ApplicationController
   before_action :find_psychic, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @psychics = Psychic.all
+    if params[:query].present?
+      sql_query = " \
+        psychics.specialty ILIKE :query \
+        OR psychics.localisation ILIKE :query \
+
+        OR users.name ILIKE :query \
+      "
+      @psychics = Psychic.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @psychics = Psychic.all
+    end
   end
+# OR accessories.name ILIKE :query \
+  # .joins(:accessory)
 
   def new
   	@psychic = Psychic.new

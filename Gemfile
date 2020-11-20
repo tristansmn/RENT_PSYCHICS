@@ -34,7 +34,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cloudinary', '~> 1.16.0'
 
-
+gem 'pg_search'
 
 gem 'faker'
 

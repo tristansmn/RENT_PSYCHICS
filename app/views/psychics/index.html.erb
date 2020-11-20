@@ -1,7 +1,17 @@
 <div id="half-fold-purple" class="d-flex flex-column justify-content-center align-items-center">
     <div><h1> Here are all our great psychics !</h1></div>
     <div><h2>Have a look to find the one who will bring you some magic...</h2></div>
+<%= form_tag psychics_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a psychic"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 </div>
+
+
 
 <div class="container">
 
