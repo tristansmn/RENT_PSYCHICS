@@ -11,7 +11,7 @@
             <div class="card-index">
               <%= link_to psychic_path(psychic) do %>
                 <% if psychic.photo.attached? %>
-                  <%= cl_image_tag psychic.photo.key, crop: :fill %>
+                  <%= cl_image_tag psychic.photo.key, width: 400, height: 300, crop: :pad %>
                 <% else %>
                   <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
                 <% end %>

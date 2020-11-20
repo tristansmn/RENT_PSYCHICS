@@ -1,7 +1,7 @@
 <div class="psychic-container">
   <div class="card-product">
     <% if @psychic.photo.attached? %>
-        <%= cl_image_tag @psychic.photo.key, width: 300, height: 200, crop: :fit %>
+        <%= cl_image_tag @psychic.photo.key, width: 400, height: 300, crop: :pad %>
         <% else %>
         <img src='https://vanbytheriver.files.wordpress.com/2015/06/psychic.jpg'/>
     <% end %>
@@ -28,13 +28,25 @@
         <% if current_user.id != @psychic.user_id %>
          <h2>Book <%= User.find(@psychic.user_id).name%> now:</h2>
             <%= simple_form_for([@psychic, @booking]) do |f| %>
-              <%= f.input :start_date, as: :string, type: :text %>
-              <%= f.input :end_date, as: :string, type: :text%>
-              <%= f.input :nb_accessories, as: :integer, input_html: {value: 0 }%>
+              <%= f.input :start_date, as: :string, label: false, type: :text,  placeholder: 'From' %>
+              <%= f.input :end_date, as: :string, label: false, type: :text,   placeholder: 'To'%> 
               <%= f.input :total_price, as: :integer, input_html: {value: 135 }%>
+              <% if @psychic.accessories != nil %>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accessoryBooking">Add accessories to your booking</button>
+              <%end%>
+              <br>
+              <br>
+              <div>
+                <td>€<span id="price_per_hour"><%= @psychic.hour_rate %></span> x <span id="hours">0</span> hours:</td>
+                <td class="text-right"><span id="price">0</span>€</td>
+              </div>
+              <div>
+              <br>
               <%= f.submit "Book", class: "btn btn-flat" %>
+              </div>
             <% end %>
-        <%else%>
+              
+      <%else%>
             <button type="button" class="btn btn-flat btn-card-show-psychic" data-toggle="modal" data-target="#edit">
             Edit
             </button>
@@ -50,6 +62,31 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="accessoryBooking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Accessories</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <div class="modal-body">
+              <% @psychic.accessories.each do |accessory| %>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    <%= accessory.name %>: <%= accessory.price %>€
+                  </label> 
+                </div> 
+              <%end%> 
+              <br>
+              <button type="submit" id="add" class="btn btn-sm btn-outline-primary rounded-pill">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="modal fade" id="addAccessory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -85,9 +122,11 @@
             <%= f.input :hour_rate, as: :numeric, label: false, placeholder: 'Enter your price per hour'%>
             <%= f.input :localisation, as: :string, label: false, placeholder: 'Precise your city' %>
             <%= f.input :photo, as: :file %>
-            <%= f.submit "Create your psychic profile!", class: "btn btn-primary" %>
+            <%= f.submit "Edit", class: "btn btn-sm btn-outline-primary rounded-pill" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+
+
