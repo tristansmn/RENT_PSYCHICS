@@ -49,15 +49,16 @@
               <br>
               <br>
               <div>
+              <div>
                 <td><span id="price_per_hour"><%= @psychic.hour_rate %></span>€ x <span id="hours">0</span> hours:</td>
                 <td><span id="price">0</span>€</td>
-              </div>
-              <div class=accessory-display>
-                <td>10€ x <span class="number_accessory">0</span><span class="accessory"> accessory:</span></td>
-                <td><span class="price_accessory">0</span>€</td>
-              </div>
-              <br>
-              <h3>Total Price: <span id="total-price">0</span>€</h3>
+                <div class=accessory-display>
+                  <td>10€ x <span class="number_accessory">0</span><span class="accessory"> accessory:</span></td>
+                  <td><span class="price_accessory">0</span>€</td>
+                </div> 
+               <br>
+              <p class= "total-price">Total Price: <span id="total-price">0</span>€</p> 
+              </div>      
               <div>
               <br>
               <%= f.submit "Book", class: "btn btn-flat" %>
